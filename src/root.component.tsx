@@ -23,7 +23,7 @@ export default function Root(props) {
           <Nav.Link href="/">
             <FontAwesomeIcon icon={faHome} /> Home
           </Nav.Link>
-          <Nav.Link href="/login">
+          <Nav.Link href="#login">
             <FontAwesomeIcon icon={faUser} /> Login
           </Nav.Link>
         </Nav>
