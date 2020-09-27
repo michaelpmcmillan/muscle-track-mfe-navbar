@@ -15,6 +15,10 @@ export default function Root(props) {
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
           crossOrigin="anonymous"
         ></link>
+        <script
+          type="text/javascript"
+          src="https://identity.netlify.com/v1/netlify-identity-widget.js"
+        ></script>
       </Helmet>
       <Navbar.Brand href="/">Muscle Track</Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -23,8 +27,8 @@ export default function Root(props) {
           <Nav.Link href="/">
             <FontAwesomeIcon icon={faHome} /> Home
           </Nav.Link>
-          <Nav.Link href="#login">
-            <FontAwesomeIcon icon={faUser} /> Login
+          <Nav.Link href="#" data-netlify-identity-button>
+            <FontAwesomeIcon icon={faUser} />
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>
