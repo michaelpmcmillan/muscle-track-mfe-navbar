@@ -14,11 +14,11 @@ export default function Root(props) {
           crossOrigin="anonymous"
         ></link>
       </Helmet>
-      <Navbar.Brand href="/home">Muscle Track</Navbar.Brand>
+      <Navbar.Brand href="/">Muscle Track</Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="/home">Home</Nav.Link>
+          <Nav.Link href="/">Home</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
