@@ -3,7 +3,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Helmet from "react-helmet";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faUser, faWeight } from "@fortawesome/free-solid-svg-icons";
 
 export default function Root(props) {
   return (
@@ -26,6 +26,9 @@ export default function Root(props) {
         <Nav className="mr-auto">
           <Nav.Link href="/">
             <FontAwesomeIcon icon={faHome} /> Home
+          </Nav.Link>
+          <Nav.Link href="/capture/weight-loss">
+            <FontAwesomeIcon icon={faWeight} /> Measure
           </Nav.Link>
           <Nav.Link href="#" data-netlify-identity-button>
             <FontAwesomeIcon icon={faUser} />
