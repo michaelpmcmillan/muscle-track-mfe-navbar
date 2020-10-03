@@ -1,9 +1,39 @@
 import React from "react";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
 import Helmet from "react-helmet";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faUser, faWeight } from "@fortawesome/free-solid-svg-icons";
+import netlifyIdentity from "netlify-identity-widget";
+
+netlifyIdentity.init();
+
+const isLoggedIn = () => {
+  return netlifyIdentity && netlifyIdentity.currentUser();
+};
+
+const username = () => {
+  const {
+    app_metadata,
+    created_at,
+    confirmed_at,
+    email,
+    id,
+    user_metadata: { full_name },
+  } = netlifyIdentity.currentUser();
+
+  return full_name;
+};
+
+const handleLogin = async () => {
+  await netlifyIdentity.open();
+};
+
+const handleLogout = async () => {
+  await netlifyIdentity.logout();
+  window.location.reload();
+};
 
 export default function Root(props) {
   return (
@@ -27,12 +57,21 @@ export default function Root(props) {
           <Nav.Link href="/">
             <FontAwesomeIcon icon={faHome} /> Home
           </Nav.Link>
-          <Nav.Link href="/capture/weight-loss">
-            <FontAwesomeIcon icon={faWeight} /> Measure
-          </Nav.Link>
-          <Nav.Link href="#" data-netlify-identity-button>
-            <FontAwesomeIcon icon={faUser} />
-          </Nav.Link>
+          {isLoggedIn() && (
+            <NavDropdown title={username()} id="logged-in-dropdown">
+              <Nav.Link href="/capture/weight-loss">
+                <FontAwesomeIcon icon={faWeight} /> Measure
+              </Nav.Link>
+              <a className="nav-link" onClick={handleLogout} href="#">
+                <FontAwesomeIcon icon={faUser} /> Logout
+              </a>
+            </NavDropdown>
+          )}
+          {!isLoggedIn() && (
+            <a className="nav-link" onClick={handleLogin} href="#">
+              <FontAwesomeIcon icon={faUser} /> Login
+            </a>
+          )}
         </Nav>
       </Navbar.Collapse>
     </Navbar>
