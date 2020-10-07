@@ -58,14 +58,14 @@ export default function Root(props) {
             <FontAwesomeIcon icon={faHome} /> Home
           </Nav.Link>
           {isLoggedIn() && (
-            <NavDropdown title={username()} id="logged-in-dropdown">
-              <Nav.Link href="/capture/weight-loss">
-                <FontAwesomeIcon icon={faWeight} /> Measure
-              </Nav.Link>
-              <a className="nav-link" onClick={handleLogout} href="#">
-                <FontAwesomeIcon icon={faUser} /> Logout
-              </a>
-            </NavDropdown>
+            <Nav.Link href="/capture/weight-loss">
+              <FontAwesomeIcon icon={faWeight} /> Measure
+            </Nav.Link>
+          )}
+          {isLoggedIn() && (
+            <a className="nav-link" onClick={handleLogout} href="#">
+              <FontAwesomeIcon icon={faUser} /> Logout
+            </a>
           )}
           {!isLoggedIn() && (
             <a className="nav-link" onClick={handleLogin} href="#">

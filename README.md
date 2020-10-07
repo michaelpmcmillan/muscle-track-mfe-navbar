@@ -28,3 +28,9 @@ y (typescript)
 michaelpmcmillan
 muscle-track-mfe-navbar
 ```
+
+## See
+
+- https://www.netlify.com/blog/2017/10/30/how-to-add-netlify-identity-service-to-react-projects/
+- https://github.com/open-sauced/open-sauced/blob/10ee3618769c3f54d26134d39569d5897a8319c9/src/App.js
+- https://www.netlify.com/blog/2019/02/21/the-role-of-roles-and-how-to-set-them-in-netlify-identity/
