@@ -3,7 +3,8 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Helmet from "react-helmet";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { 
+import {
+  faAddressCard,
   faHome,
   faSignInAlt,
   faSignOutAlt,
@@ -61,6 +62,11 @@ export default function Root(props) {
           <Nav.Link href="/">
             <FontAwesomeIcon icon={faHome} /> Home
           </Nav.Link>
+          {isLoggedIn() && (
+            <Nav.Link href="/profile">
+              <FontAwesomeIcon icon={faAddressCard} /> Profile
+            </Nav.Link>
+          )}
           {isLoggedIn() && (
             <Nav.Link href="/capture/weight-loss">
               <FontAwesomeIcon icon={faWeight} /> Measure
