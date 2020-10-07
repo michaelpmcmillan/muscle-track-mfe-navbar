@@ -1,10 +1,14 @@
 import React from "react";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import Helmet from "react-helmet";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome, faUser, faWeight } from "@fortawesome/free-solid-svg-icons";
+import { 
+  faHome,
+  faSignInAlt,
+  faSignOutAlt,
+  faWeight,
+} from "@fortawesome/free-solid-svg-icons";
 import netlifyIdentity from "netlify-identity-widget";
 
 netlifyIdentity.init();
@@ -64,12 +68,12 @@ export default function Root(props) {
           )}
           {isLoggedIn() && (
             <a className="nav-link" onClick={handleLogout} href="#">
-              <FontAwesomeIcon icon={faUser} /> Logout
+              <FontAwesomeIcon icon={faSignOutAlt} /> Logout
             </a>
           )}
           {!isLoggedIn() && (
             <a className="nav-link" onClick={handleLogin} href="#">
-              <FontAwesomeIcon icon={faUser} /> Login
+              <FontAwesomeIcon icon={faSignInAlt} /> Login
             </a>
           )}
         </Nav>

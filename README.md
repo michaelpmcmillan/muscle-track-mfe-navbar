@@ -14,6 +14,7 @@ yarn start:dev
 
 - Uses react-helmet to inject html headers, such as css cdn links. This keeps the micro-front-end self contained.
 - Uses react-bootstrap and the bootstrap cdn.
+- Uses font-awesome for navbar icons
 
 ## How was this app started?
 
