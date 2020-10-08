@@ -18,18 +18,8 @@ const isLoggedIn = () => {
   return netlifyIdentity && netlifyIdentity.currentUser();
 };
 
-const username = () => {
-  const {
-    app_metadata,
-    created_at,
-    confirmed_at,
-    email,
-    id,
-    user_metadata: { full_name },
-  } = netlifyIdentity.currentUser();
-
-  return full_name;
-};
+netlifyIdentity.on("login", (user) => (window.location.href = "/"));
+netlifyIdentity.on("logout", (user) => (window.location.href = "/"));
 
 const handleLogin = async () => {
   await netlifyIdentity.open();
@@ -37,7 +27,6 @@ const handleLogin = async () => {
 
 const handleLogout = async () => {
   await netlifyIdentity.logout();
-  window.location.reload();
 };
 
 export default function Root(props) {
