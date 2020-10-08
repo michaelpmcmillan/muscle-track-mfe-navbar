@@ -67,9 +67,9 @@ export default function Root(props) {
             </a>
           )}
           {!isLoggedIn() && (
-            <a className="nav-link" onClick={handleLogin} href="#">
+            <Nav.Link href="/login">
               <FontAwesomeIcon icon={faSignInAlt} /> Login
-            </a>
+            </Nav.Link>
           )}
         </Nav>
       </Navbar.Collapse>
