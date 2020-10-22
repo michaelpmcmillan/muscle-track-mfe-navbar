@@ -2,36 +2,15 @@ import React from "react";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Helmet from "react-helmet";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faAddressCard,
-  faHome,
-  faSignInAlt,
-  faSignOutAlt,
-  faWeight,
-} from "@fortawesome/free-solid-svg-icons";
-import netlifyIdentity from "netlify-identity-widget";
-
-netlifyIdentity.init();
-
-const isLoggedIn = () => {
-  return netlifyIdentity && netlifyIdentity.currentUser();
-};
-
-netlifyIdentity.on("login", (user) => (window.location.href = "/"));
-netlifyIdentity.on("logout", (user) => (window.location.href = "/"));
-
-const handleLogin = async () => {
-  await netlifyIdentity.open();
-};
-
-const handleLogout = async () => {
-  await netlifyIdentity.logout();
-};
+import Home from "./navbar-links/home";
+import Login from "./navbar-links/login";
+import Logout from "./navbar-links/logout";
+import Profile from "./navbar-links/profile";
+import CaptureWeightLoss from "./navbar-links/capture-weight-loss";
 
 export default function Root(props) {
   return (
-    <Navbar collapseOnSelect bg="light" expand="lg" sticky="top">
+    <Navbar collapseOnSelect bg="light" expand="lg">
       <Helmet>
         <link
           rel="stylesheet"
@@ -45,32 +24,14 @@ export default function Root(props) {
         ></script>
       </Helmet>
       <Navbar.Brand href="/">Muscle Track</Navbar.Brand>
-      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-      <Navbar.Collapse id="responsive-navbar-nav">
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="/">
-            <FontAwesomeIcon icon={faHome} /> Home
-          </Nav.Link>
-          {isLoggedIn() && (
-            <Nav.Link href="/profile">
-              <FontAwesomeIcon icon={faAddressCard} /> Profile
-            </Nav.Link>
-          )}
-          {isLoggedIn() && (
-            <Nav.Link href="/capture/weight-loss">
-              <FontAwesomeIcon icon={faWeight} /> Measure
-            </Nav.Link>
-          )}
-          {isLoggedIn() && (
-            <a className="nav-link" onClick={handleLogout} href="#">
-              <FontAwesomeIcon icon={faSignOutAlt} /> Logout
-            </a>
-          )}
-          {!isLoggedIn() && (
-            <Nav.Link href="/login">
-              <FontAwesomeIcon icon={faSignInAlt} /> Login
-            </Nav.Link>
-          )}
+          {Home()}
+          {Profile()}
+          {CaptureWeightLoss()}
+          {Logout()}
+          {Login()}
         </Nav>
       </Navbar.Collapse>
     </Navbar>
