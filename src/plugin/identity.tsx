@@ -1,17 +1,18 @@
-import netlifyIdentity from "netlify-identity-widget";
+import GoTrue from "gotrue-js";
 
-netlifyIdentity.init();
-netlifyIdentity.on("login", (user) => (window.location.href = "/"));
-netlifyIdentity.on("logout", (user) => (window.location.href = "/"));
+const auth = new GoTrue({
+  APIUrl: "https://muscle-track.netlify.app/.netlify/identity",
+  audience: "",
+  setCookie: true,
+});
 
-export const login = async () => {
-  await netlifyIdentity.open();
-};
-
-export const logout = async () => {
-  await netlifyIdentity.logout();
+export const logout = () => {
+  auth
+    .currentUser()
+    .logout()
+    .then((response) => (window.location.href = "/"));
 };
 
 export const isLoggedIn = () => {
-  return netlifyIdentity && netlifyIdentity.currentUser();
+  return auth && auth.currentUser();
 };
